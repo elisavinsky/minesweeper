@@ -1,2 +1,12 @@
+.gBoard {
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: lightgray;
+}
 
-
+.gBoard div{
+    height: 40px;
+    width: 40px;
+}
