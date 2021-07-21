@@ -6,7 +6,19 @@
     background-color: lightgray;
 }
 
+
+
 .gBoard div{
     height: 40px;
     width: 40px;
 }
+
+.mine {
+    background-color: red;
+}
+
+
+.checked{
+    background-color: whitesmoke;
+}
+
