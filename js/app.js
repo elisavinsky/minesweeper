@@ -47,7 +47,7 @@ let total = 0;
      if (i < 142 && !isRightEdge && elCells[i + 1].classList.contains('mine')) total++;
      if (i < 132 && !isLeftEdge && elCells[i - 1 + size].classList.contains('mine')) total++;
      if (i < 130 && !isRightEdge && elCells[i +  1 + size].classList.contains('mine')) total++;
-     if (i > 131 && elCells[i + size].classList.contains('mine')) total++;
+     if (i < 131 && elCells[i + size].classList.contains('mine')) total++;
      
 
      elCells[i].setAttribute('data', total);
@@ -74,16 +74,15 @@ function click(elCell){
          console.log('game over')
      } else {
          let total = elCell.getAttribute('data');
-
          if(total != 0){
              elCell.classList.add('checked')
              elCell.innerHTML = total;
              return; 
          }
-         
-            elCell.classList.add('checked');
-         //checkCell(elCell, currentId)       
-     }    
+         checkCell(elCell, currentId)
+             
+     }  
+     elCell.classList.add('checked');    
 }
 
 /*
@@ -118,23 +117,22 @@ setTimeout(() => {
         const newCell = document.getElementById(newId)
         click(newCell)
     }
-    if(currentId > 132 && !isLeftEdge){
+    if(currentId < 132 && !isLeftEdge){
         const newId = elCells[parseInt(currentId) - 1 + size].id
         const newCell = document.getElementById(newId)
         click(newCell)
     }
-    if(currentId > 130 && !isRightEdge){
+    if(currentId < 130 && !isRightEdge){
         const newId = elCells[parseInt(currentId) + 1 + size].id
         const newCell = document.getElementById(newId)
         click(newCell)
     }
-    if(currentId > 131 && !isRightEdge){
+    if(currentId < 131 && !isRightEdge){
         const newId = elCells[parseInt(currentId) + size].id
         const newCell = document.getElementById(newId)
         click(newCell)
     }
 }, 10)
-
 */
 }
 
