@@ -3,8 +3,8 @@ window.onload=initGame();
 function initGame(){
 
 const gBoard = document.querySelector('.gBoard')
-let size = 10
-let mineAmount = 20
+let size = 12
+let mineAmount = 30
 let elCells = []
 let isGameOver = false;
 
@@ -41,16 +41,14 @@ const isRightEdge = (i % size === size - 1)
 let total = 0;
  if (elCells[i].classList.contains('valid')){
      if (i > 0 && !isLeftEdge && elCells[i - 1].classList.contains('mine')) total++;
-     if (i > 9 && !isRightEdge && elCells[i + 1 - size].classList.contains('mine')) total++;
-     if (i > 10 && elCells[i - size].classList.contains('mine')) total++;
-     if (i > 11 && !isLeftEdge && elCells[i - 1 - size].classList.contains('mine')) total++;
-     if (i < 98 && !isRightEdge && elCells[i + 1].classList.contains('mine')) total++;
-     if (i < 90 && !isLeftEdge && elCells[i - 1 + size].classList.contains('mine')) total++;
-     if (i < 88 && !isRightEdge && elCells[i +  1 + size].classList.contains('mine')) total++;
-     if (i > 89 && elCells[i + size].classList.contains('mine')) total++;
+     if (i > 11 && !isRightEdge && elCells[i + 1 - size].classList.contains('mine')) total++;
+     if (i > 12 && elCells[i - size].classList.contains('mine')) total++;
+     if (i > 13 && !isLeftEdge && elCells[i - 1 - size].classList.contains('mine')) total++;
+     if (i < 142 && !isRightEdge && elCells[i + 1].classList.contains('mine')) total++;
+     if (i < 132 && !isLeftEdge && elCells[i - 1 + size].classList.contains('mine')) total++;
+     if (i < 130 && !isRightEdge && elCells[i +  1 + size].classList.contains('mine')) total++;
+     if (i > 131 && elCells[i + size].classList.contains('mine')) total++;
      
-
-
 
      elCells[i].setAttribute('data', total);
      console.log(elCells[i]);
@@ -100,37 +98,37 @@ setTimeout(() => {
         const newCell = document.getElementById(newId)
         click(newCell)
     }
-    if(currentId > 9 && !isRightEdge){
+    if(currentId > 11 && !isRightEdge){
         const newId = elCells[parseInt(currentId) + 1 - size].id
         const newCell = document.getElementById(newId)
         click(newCell)
     }
-    if(currentId > 10 && !isRightEdge){
+    if(currentId > 12 && !isRightEdge){
         const newId = elCells[parseInt(currentId - size)].id
         const newCell = document.getElementById(newId)
         click(newCell)
     }
-    if(currentId > 11 && !isLeftEdge){
+    if(currentId > 13 && !isLeftEdge){
         const newId = elCells[parseInt(currentId) - 1 - size].id
         const newCell = document.getElementById(newId)
         click(newCell)
     }
-    if(currentId > 98 && !isRightEdge){
+    if(currentId > 142 && !isRightEdge){
         const newId = elCells[parseInt(currentId) + 1].id
         const newCell = document.getElementById(newId)
         click(newCell)
     }
-    if(currentId > 90 && !isLeftEdge){
+    if(currentId > 132 && !isLeftEdge){
         const newId = elCells[parseInt(currentId) - 1 + size].id
         const newCell = document.getElementById(newId)
         click(newCell)
     }
-    if(currentId > 88 && !isRightEdge){
+    if(currentId > 130 && !isRightEdge){
         const newId = elCells[parseInt(currentId) + 1 + size].id
         const newCell = document.getElementById(newId)
         click(newCell)
     }
-    if(currentId > 89 && !isRightEdge){
+    if(currentId > 131 && !isRightEdge){
         const newId = elCells[parseInt(currentId) + size].id
         const newCell = document.getElementById(newId)
         click(newCell)
