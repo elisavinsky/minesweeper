@@ -1,3 +1,26 @@
+
+.gameStart{
+    border: 1px solid gray;
+    border-radius: 3px;
+    width:200px;
+    height:50px;
+    font-size: 12px;
+    text-align: center;
+    background-color: lightseagreen;
+}
+.gameStart:hover{
+    background-color: lime;
+    cursor: pointer;
+}
+
+.timer{
+    width:200px;
+    height:50px;
+    font-size: 12px;
+    text-align: center;
+}
+
+
 .gBoard {   
     margin: auto;
     display: flex;
@@ -22,3 +45,4 @@
 .mine { 
     background-color: lightgray;
 }
+
