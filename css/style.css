@@ -1,7 +1,8 @@
-.gBoard {
-    height: 480px;
-    width: 480px;
+.gBoard {   
+    margin: auto;
     display: flex;
+    height: 360px;
+    width: 360px;
     flex-wrap: wrap;
     background-color: lightgray;
 }
@@ -9,12 +10,8 @@
 
 
 .gBoard div{
-    height: 40px;
-    width: 40px;
-}
-
-.mine {
-    background-color: red;
+    height: 30px;
+    width: 30px;
 }
 
 
@@ -22,3 +19,6 @@
     background-color: whitesmoke;
 }
 
+.mine {
+    background-color: red;
+}
