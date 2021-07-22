@@ -12,6 +12,7 @@ let isGameOver = false
 function buildBoard(){
 //Set mines at random locations
 const minesArray = Array(mineAmount).fill('mine');
+
 const emptyArray = Array(size*size - mineAmount).fill('valid');
 //console.log(emptyArray);
 //console.log(minesArray);
@@ -21,12 +22,12 @@ const mixArray = gameArray.sort(() => Math.random() - 0.5);
 //console.log(mixArray);
     
      for(let i = 0; i < size*size; i++){
-         const elCell = document.createElement('div')
+         const elCell = document.createElement('div')          
          elCell.setAttribute('id', i)
          elCell.classList.add(mixArray[i])
          gBoard.appendChild(elCell)
-          elCells.push(elCell)
-
+         elCells.push(elCell)
+         
           //left click
           elCell.addEventListener('click', function(event){
               click(elCell) 
@@ -69,7 +70,7 @@ buildBoard();
 //right click on cell actions
 function addFlag(elCell){
     if(isGameOver) return;
-    if(!elCell.classList.contains('checked') && (flag < mineAmount)){
+    if(!elCell.classList.contains('marked') && (flag < mineAmount)){
         if(!elCell.classList.contains('flag')){
             elCell.classList.add('flag')
             elCell.innerHTML = 'P'
@@ -88,7 +89,7 @@ function addFlag(elCell){
 function click(elCell){
     let currentId = elCell.id;
      if(isGameOver) return;
-     if(elCell.classList.contains('checked') || elCell.classList.contains('flag')){
+     if(elCell.classList.contains('marked') || elCell.classList.contains('flag')){
          return;
      }
      if(elCell.classList.contains('mine')){         
@@ -96,13 +97,13 @@ function click(elCell){
      } else {
          let total = elCell.getAttribute('data');
          if(total != 0){
-             elCell.classList.add('checked')
+             elCell.classList.add('marked')
              elCell.innerHTML = total;
              return; 
          }
          checkCell(elCell, currentId)            
      }  
-     elCell.classList.add('checked');    
+     elCell.classList.add('marked');    
 }
 
 
@@ -165,6 +166,7 @@ function gameOver(elCell){
     elCells.forEach(elCell => {
         if(elCell.classList.contains('mine')){
           elCell.innerHTML = '*';  
+          elCell.style.backgroundColor = "#FF0000";
         }
     })
 }
@@ -174,7 +176,7 @@ function gameOver(elCell){
 function checkWin(){
     let matches = 0
     for(let i = 0; i < elCells.length; i++){
-        if(elCells[i].classList.contains('flag')&&elCells[i].classList.contains('mine')){
+        if(elCells[i].classList.contains('flag') && elCells[i].classList.contains('mine')){
             matches++
         }
         if(matches === mineAmount){
