@@ -5,20 +5,20 @@
     width: 360px;
     flex-wrap: wrap;
     background-color: lightgray;
+    
 }
 
 
-
-.gBoard div{
+.gBoard div{    
     height: 30px;
     width: 30px;
 }
 
 
-.checked{
+.marked{
     background-color: whitesmoke;
 }
 
-.mine {
-    background-color: red;
+.mine { 
+    background-color: lightgray;
 }
