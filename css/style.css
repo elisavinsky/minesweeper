@@ -23,6 +23,7 @@
 
 .gBoard {   
     margin: auto;
+    margin-top: 40px;
     display: flex;
     height: 360px;
     width: 360px;
