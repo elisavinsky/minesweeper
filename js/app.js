@@ -85,8 +85,9 @@ function click(elCell){
      elCell.classList.add('checked');    
 }
 
-/*
+
 //check neighboring cells once cell is clicked
+
 function checkCell(elCell, currentId){
 const isLeftEdge = (currentId % size === 0)
 const isRightEdge = (currentId % size === size - 1)
@@ -133,7 +134,8 @@ setTimeout(() => {
         click(newCell)
     }
 }, 10)
-*/
+
+}
 }
 
 
