@@ -1,18 +1,20 @@
 window.onload=initGame();
 
-function initGame(){
 
+
+function initGame(){
 const gBoard = document.querySelector('.gBoard')
-let size = 12
-let mineAmount = 30
 let flag = 0
 let elCells = []
 let isGameOver = false
+let time = 0;
+
+let size = 12
+let mineAmount = 30
 
 function buildBoard(){
 //Set mines at random locations
 const minesArray = Array(mineAmount).fill('mine');
-
 const emptyArray = Array(size*size - mineAmount).fill('valid');
 //console.log(emptyArray);
 //console.log(minesArray);
@@ -30,15 +32,18 @@ const mixArray = gameArray.sort(() => Math.random() - 0.5);
          
           //left click
           elCell.addEventListener('click', function(event){
-              click(elCell) 
+              click(elCell)
           });
 
-          //left click control
+          
+
+          //right click
           elCell.oncontextmenu = function(event){
               event.preventDefault()
               addFlag(elCell)
-          }
 
+          }
+          
      }
 
 //add numbers
@@ -64,7 +69,20 @@ let total = 0;
     }    
 }
 
+
+
 buildBoard();
+timer();
+
+function timer(){
+    setTimeout(() => { 
+        let timerDiv = document.getElementById('timer'); 
+        timerDiv.innerHTML = time++;             
+        timer();
+    },1000);
+}
+
+
 
 
 //right click on cell actions
@@ -88,6 +106,7 @@ function addFlag(elCell){
 //left click on cell actions
 function click(elCell){
     let currentId = elCell.id;
+    
      if(isGameOver) return;
      if(elCell.classList.contains('marked') || elCell.classList.contains('flag')){
          return;
@@ -98,11 +117,11 @@ function click(elCell){
          let total = elCell.getAttribute('data');
          if(total != 0){
              elCell.classList.add('marked')
-             elCell.innerHTML = total;
+             elCell.innerHTML = total;           
              return; 
-         }
-         checkCell(elCell, currentId)            
-     }  
+         }       
+         checkCell(elCell, currentId);          
+     }       
      elCell.classList.add('marked');    
 }
 
@@ -159,15 +178,19 @@ setTimeout(() => {
 
 //game over
 function gameOver(elCell){
-    console.log('Game over')
     isGameOver = true;
+    console.log('Game over')
+    
 
     //show all mines 
     elCells.forEach(elCell => {
         if(elCell.classList.contains('mine')){
           elCell.innerHTML = '*';  
           elCell.style.backgroundColor = "#FF0000";
+          
+         
         }
+       
     })
 }
 
@@ -183,12 +206,18 @@ function checkWin(){
             
             isGameOver = true;
             alert('victory!')
+            location.reload()
             return;
         }
     }
 }
 
+
+
 }
+
+
+
 
 
 
